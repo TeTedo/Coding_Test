@@ -66,6 +66,7 @@ function solution(s) {
   return answer;
 }
 
+
 // charAt(i)와 string[i]의 차이점
 // 참고 https://thisthat.dev/string-char-at-vs-string-bracket-notation/
 //https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/charAt

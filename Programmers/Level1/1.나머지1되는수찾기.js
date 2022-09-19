@@ -1,4 +1,4 @@
-//school.programmers.co.kr/learn/courses/30/lessons/87389
+// school.programmers.co.kr/learn/courses/30/lessons/87389
 function solution(n) {
   var answer = 0;
   for (let i = 1; i < n; i++) {
