@@ -40,7 +40,7 @@ function solution(s) {
   return answer;
 }
 
-// 런타임 에러..
+// 런타임 에러.. 반복문이 1개만들어가도 런타임에러..
 
 //4번째 풀이
 function solution(s) {
@@ -70,3 +70,4 @@ function solution(s) {
 // charAt(i)와 string[i]의 차이점
 // 참고 https://thisthat.dev/string-char-at-vs-string-bracket-notation/
 //https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/charAt
+// charAt은 어떻게든 i를 인덱스로 가지려고 함 => 1.23 같이 float을 넣으면 1로 검색
