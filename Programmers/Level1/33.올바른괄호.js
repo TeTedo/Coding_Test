@@ -44,4 +44,23 @@ function solution(s) {
   return answer;
 }
 
-// 런타임오류
+// 효율성 실패
+
+function solution(s) {
+  var answer = true;
+  const length = s.length;
+  for (let i = 0; i < length / 2; i++) {
+    const idx1 = s.indexOf("(");
+    const idx2 = s.indexOf(")");
+
+    if (idx2 < idx1 || idx1 == -1 || idx2 == -1) {
+      answer = false;
+      break;
+    }
+
+    s = s.split("()").join("");
+    if (s == "") break;
+  }
+  return answer;
+}
+// 효율성 실패
