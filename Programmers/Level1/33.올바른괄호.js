@@ -64,3 +64,18 @@ function solution(s) {
   return answer;
 }
 // 효율성 실패
+function solution(s) {
+  var answer = true;
+  while (true) {
+    s = s.split("()").join("");
+
+    if (s == "") break;
+
+    if (s.charAt(0) == ")" || s.charAt(s.length - 1) == "(") {
+      answer = false;
+      break;
+    }
+  }
+  return answer;
+}
+// 효율성 실패
