@@ -25,3 +25,13 @@ function solution(s) {
 }
 
 // 효율성테스트 시간초과
+
+function solution(s) {
+  for (let i = s.length-1; i >0; i--) {
+    if (s[i] == s[i - 1]) {
+      s = s.substring(0,i-1) + s.substring(i+1)
+    }
+    if (s == "") return 1;
+  }
+  return 0;
+}
