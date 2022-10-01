@@ -64,18 +64,21 @@ function solution(s) {
   return answer;
 }
 // 효율성 실패
+
 function solution(s) {
-  var answer = true;
+  if (s.length % 2) return false;
+  const leftLen = s.split("(").length;
+  const rightLen = s.split(")").length;
+  if (leftLen !== rightLen) return false;
+
   while (true) {
+    if (s[0] === ")" || s.at(-1) === "(") {
+      return false;
+    }
+
     s = s.split("()").join("");
 
-    if (s == "") break;
-
-    if (s.charAt(0) == ")" || s.charAt(s.length - 1) == "(") {
-      answer = false;
-      break;
-    }
+    if (s === "") return true;
   }
-  return answer;
 }
-// 효율성 실패
+// 효율성 1번만 실패
