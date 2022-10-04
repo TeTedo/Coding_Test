@@ -29,9 +29,12 @@ function solution(s) {
 function solution(s) {
   for (let i = s.length-1; i >0; i--) {
     if (s[i] == s[i - 1]) {
-      s = s.substring(0,i-1) + s.substring(i+1)
+      s = s.split(s[i] + s[i-1]).join("")
     }
     if (s == "") return 1;
   }
   return 0;
 }
+// 효율성테스트 시간초과
+// 이방법보다 위 방법이 더 빨랐음. 배열 메서드들 이용하면 O(N)
+

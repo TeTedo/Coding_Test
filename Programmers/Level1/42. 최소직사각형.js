@@ -6,3 +6,4 @@ function solution(sizes) {
   len2 = sizes.sort((a, b) => b[1] - a[1])[0][1];
   return len1 * len2;
 }
+
