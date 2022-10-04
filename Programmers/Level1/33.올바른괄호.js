@@ -81,9 +81,9 @@ function solution(s) {
     if (s === "") return true;
   }
 }
-<<<<<<< HEAD
+
 // 효율성 1번만 실패
-=======
+
 // 효율성 실패
 
 function solution(s) {
@@ -97,4 +97,3 @@ function solution(s) {
 }
 
 // split과 join을 계속 하는거보다 s의 인덱스로 접근해서 쌓는게 더 빠른듯
->>>>>>> c49c6989c4156910106115f0ec87fec1c15f4882

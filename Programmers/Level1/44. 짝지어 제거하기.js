@@ -27,9 +27,9 @@ function solution(s) {
 // 효율성테스트 시간초과
 
 function solution(s) {
-  for (let i = s.length-1; i >0; i--) {
+  for (let i = s.length - 1; i > 0; i--) {
     if (s[i] == s[i - 1]) {
-      s = s.split(s[i] + s[i-1]).join("")
+      s = s.split(s[i] + s[i - 1]).join("");
     }
     if (s == "") return 1;
   }
@@ -38,3 +38,16 @@ function solution(s) {
 // 효율성테스트 시간초과
 // 이방법보다 위 방법이 더 빨랐음. 배열 메서드들 이용하면 O(N)
 
+function solution(s) {
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] == s[i + 1]) {
+      s = s.split(s[i] + s[i + 1]).join("");
+      i = i == 0 ? -1 : i - 2;
+    }
+    if (s == "") return 1;
+  }
+  return 0;
+}
+
+// 효율성 테스트 실패
+// 위 방법보다는 빠름 -> i를 조절해줘야 한다고 느낌
