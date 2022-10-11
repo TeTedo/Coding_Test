@@ -17,12 +17,7 @@ function solution(board) {
       }
     }
   }
-  return (
-    board.length ** 2 -
-    Object.keys(boomIndex).filter(
-      (v) => +v >= 0 && v[0] < board.length && v[1] < board.length
-    ).length
-  );
+  return board.length ** 2 - Object.keys(boomIndex).filter((v) => v[0] < board.length && v[1] < board.length).length;
 }
 
 // 테스트케이스 7만 실패
