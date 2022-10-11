@@ -51,3 +51,13 @@ function solution(s) {
 
 // 효율성 테스트 실패
 // 위 방법보다는 빠름 -> i를 조절해줘야 한다고 느낌
+function solution(s) {
+  const arr = [];
+  for (const value of s) {
+    if (value == arr.at(-1)) arr.pop();
+    else arr.push(value);
+  }
+  return arr.length ? 0 : 1;
+}
+
+// 스택으로 비교 하니까 바로 통과
