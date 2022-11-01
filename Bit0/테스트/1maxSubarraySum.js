@@ -9,10 +9,28 @@
 
 // Space Complexity - O(1)
 
-function maxSubarraySum() {}
+function maxSubarraySum(arr, length) {
+  if (arr.length < length) {
+    return null;
+  }
+  // 초기값
+  let maxSum = 0;
+  let answer = 0;
+  for (let i = 0; i < length; i++) {
+    maxSum += arr[i];
+    answer += arr[i];
+  }
+  // 뒤에꺼 더하고 앞에꺼 빼기
+  for (let i = length; i < arr.length; i++) {
+    maxSum = maxSum - arr[i - length] + arr[i];
+    //값이 크면 적용
+    if (maxSum > answer) answer = maxSum;
+  }
+  return answer;
+}
 
-maxSubarraySum([100, 200, 300, 400], 2); // 700
-maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4); // 39
-maxSubarraySum([-3, 4, 0, -2, 6, -1], 2); // 5
-maxSubarraySum([3, -2, 7, -4, 1, -1, 4, -2, 1], 2); // 5
-maxSubarraySum([2, 3], 3); // null
+console.log(maxSubarraySum([100, 200, 300, 400], 2)); // 700
+console.log(maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4)); // 39
+console.log(maxSubarraySum([-3, 4, 0, -2, 6, -1], 2)); // 5
+console.log(maxSubarraySum([3, -2, 7, -4, 1, -1, 4, -2, 1], 2)); // 5
+console.log(maxSubarraySum([2, 3], 3)); // null
