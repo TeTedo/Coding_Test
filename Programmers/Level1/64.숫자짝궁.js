@@ -8,9 +8,7 @@ function solution(X, Y) {
       Y = Y.replace(X[i], "");
     }
   }
-  return answer.length == 0
-    ? "-1"
-    : BigInt(answer.sort((a, b) => b - a).join("")) + "";
+  return answer.length == 0 ? "-1" : answer.sort((a, b) => b - a).join("") + "";
 }
 
 // 런타임 오류 for문안에서 replace를 불러와서 시간복잡도 O(n^2) 이상이라고 생각
