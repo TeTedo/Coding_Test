@@ -10,6 +10,7 @@ function flatten(arr) {
       newArr.push(arr[i]);
     }
   }
+  newArr = newArr.concat(flatten())
   return newArr;
 }
 
