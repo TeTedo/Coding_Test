@@ -6,6 +6,7 @@ function flatten(arr) {
   if (arr[0].length === undefined) {
     answer.push(arr[0]);
   }
+  newArr = newArr.concat(flatten())
   return newArr;
 }
 
