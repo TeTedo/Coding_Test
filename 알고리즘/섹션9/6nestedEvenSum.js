@@ -3,9 +3,17 @@
 
 function nestedEvenSum(obj) {
   let num = 0;
-  const key = Object.values(obj);
-  console.log(obj.size);
-  for (let i = 0; i < obj.size; i++) {}
+  const keys = Object.keys(obj);
+  for (const value of keys) {
+    if (obj[value] instanceof Object) {
+      num += nestedEvenSum(obj[value]);
+    } else {
+      if (obj[value] % 2 === 0) {
+        num += obj[value];
+      }
+    }
+  }
+  return num;
   // 객체 순회
   // 객체면 재귀 돌리기
   // 짝수면 값 추가
