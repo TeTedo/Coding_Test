@@ -1,0 +1,3 @@
+버블정렬
+https://www.toptal.com/developers/sorting-algorithms 
+정렬이란
