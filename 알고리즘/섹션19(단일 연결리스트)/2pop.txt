@@ -1,0 +1,12 @@
+pop 은 배열에서 마지막 요소를 제거하는 메소드이다.
+연결리스트에서 pop도 마찬가지이다
+하지만 연결리스트에서는 인덱스가 없기 때문에 tail을 제거후 처음부터 마지막까지 새로운 tail을 정의하기 위해 가야한다.
+
+새로운 tail을 찾기위한 메소드 예시
+  traverse() {
+    var current = this.head;
+    while (current) {
+      console.log(current.val);
+      current = current.next;
+    }
+  }
