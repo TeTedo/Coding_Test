@@ -1,0 +1,4 @@
+insertion O(1)
+Removal O(1)
+searching O(N)
+access O(N)
