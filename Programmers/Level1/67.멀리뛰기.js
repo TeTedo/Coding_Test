@@ -27,3 +27,16 @@ function solution(n) {
 }
 
 // BigInt로 풀어봤는데 런타임 에러
+
+function solution(n) {
+  let arr = [1n, 1n];
+  for (let i = 2; i <= n; i++) {
+    arr.push(BigInt(arr[i - 2] + arr[i - 1]));
+  }
+  if (n < 2) return 1;
+  return arr[n] % BigInt(1234567);
+}
+
+// n-1 번째에서 n까지 가는 방법 1가지 : 1칸 뛰기
+// n-2 번째에서 n까지 가는 방법 1가지 : 2칸 뛰기
+// 결론 : n-1까지 가는 방법과 n-2까지 가는 방법을 합쳐야함 => 피보나치
