@@ -1,0 +1,32 @@
+
+이름이 같으면 DATETIME 기준으로 정렬
+SELECT ANIMAL_ID, NAME, DATETIME
+FROM ANIMAL_INS 
+ORDER BY NAME,DATETIME DESC;
+
+DATETIME기준으로 최상위 1개 뽑기
+SELECT NAME
+FROM ANIMAL_INS
+ORDER BY DATETIME asc
+LIMIT 1;
+
+가장 먼저 들어온거 찾기
+SELECT DATETIME
+FROM ANIMAL_INS
+ORDER BY DATETIME ASC
+LIMIT 1
+
+동물 보호소에 들어온 동물 중, 이름이 있는 동물의 ID를 조회하는 SQL 문을 작성해주세요. 단, ID는 오름차순 정렬되어야 합니다.
+SELECT ANIMAL_ID
+FROM ANIMAL_INS
+WHERE NOT NAME IS NULL
+
+동물 보호소에 동물이 몇 마리 들어왔는지 조회하는 SQL 문을 작성해주세요.
+SELECT COUNT (ANIMAL_ID)
+FROM ANIMAL_INS
+
+
+동물 보호소에 들어온 모든 동물의 아이디와 이름을 ANIMAL_ID순으로 조회하는 SQL문을 작성해주세요.
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID
