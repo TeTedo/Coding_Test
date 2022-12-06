@@ -30,3 +30,130 @@ FROM ANIMAL_INS
 SELECT ANIMAL_ID, NAME
 FROM ANIMAL_INS
 ORDER BY ANIMAL_ID
+
+동물 보호소에 들어온 동물 중 아픈 동물1의 아이디와 이름을 조회하는 SQL 문을 작성해주세요
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+WHERE INTAKE_CONDITION = 'Sick'
+
+동물 보호소에 들어온 동물 중 젊은 동물1의 아이디와 이름을 조회하는 SQL 문을 작성해주세요
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+WHERE INTAKE_CONDITION != 'Aged'
+
+동물 보호소에 들어온 동물의 이름은 몇 개인지 조회하는 SQL 문
+SELECT COUNT (DISTINCT NAME)
+FROM ANIMAL_INS
+
+이 사람이 말하길 할머니가 기르던 개는 이름에 'el'이 들어간다고 합니다. 동물 보호소에 들어온 동물 이름 중, 이름에 "EL"이 들어가는 개의 아이디와 이름을 조회하는 SQL문을 작성해주세요
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+WHERE lower(NAME) LIKE lower('%EL%')
+AND ANIMAL_TYPE = 'Dog'
+ORDER BY NAME
+
+동물 보호소에 들어온 모든 동물의 이름과 보호 시작일을 조회하는 SQL문을 작성해주세요
+SELECT NAME,DATETIME
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID desc
+
+동물 보호소에 들어온 동물 이름 중 두 번 이상 쓰인 이름과 해당 이름이 쓰인 횟수를 조회하는 SQL문
+SELECT NAME, count(NAME)
+FROM ANIMAL_INS
+GROUP BY NAME
+HAVING COUNT(NAME) >= 2
+ORDER BY NAME
+
+테이블에서 나이 정보가 없는 회원이 몇 명인지 출력하는 SQL
+SELECT COUNT(*) AS USERS
+FROM USER_INFO
+WHERE AGE is NULL
+
+동물의 생물 종, 이름, 성별 및 중성화 여부를 아이디 순으로 조회하는 SQL문을 작성해주세요. 이때 프로그래밍을 모르는 사람들은 NULL이라는 기호를 모르기 때문에, 이름이 없는 동물의 이름은 "No name"으로 표시해 주세요.
+SELECT ANIMAL_TYPE, IFNULL(NAME,"No name") as NAME, SEX_UPON_INTAKE
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID
+
+테이블에 등록된 모든 레코드에 대해, 각 동물의 아이디와 이름, 들어온 날짜1를 조회하는 SQL문을 작성해주세
+SELECT ANIMAL_ID, NAME, SUBSTR(DATETIME,1,10)
+FROM ANIMAL_INS 
+ORDER BY ANIMAL_ID
+
+테이블에서 강원도에 위치한 식품공장의 공장 ID, 공장 이름, 주소를 조회하는 SQL문을 작성해주세요. 이때 결과는 공장 ID를 기준으로 오름차순 정
+SELECT FACTORY_ID, FACTORY_NAME, ADDRESS
+FROM FOOD_FACTORY
+WHERE ADDRESS LIKE '강원도%'
+ORDER BY FACTORY_ID ASC
+
+동물 보호소에 들어온 동물 중 고양이와 개가 각각 몇 마리인지 조회하는 SQL문
+SELECT ANIMAL_TYPE, count(ANIMAL_TYPE) as 'count'
+FROM ANIMAL_INS
+WHERE ANIMAL_TYPE IN ('Cat','Dog')
+GROUP BY ANIMAL_TYPE 
+ORDER BY ANIMAL_TYPE ASC
+
+
+ 서비스에서는 공간을 둘 이상 등록한 사람을 "헤비 유저"라고 부릅니다. 헤비 유저가 등록한 공간의 정보를 아이디 순으로 조회하는 SQL문을 작성해주세요.
+SELECT *
+FROM PLACES
+WHERE HOST_ID in (
+    SELECT HOST_ID
+    FROM PLACES
+    GROUP BY HOST_ID
+    HAVING COUNT(HOST_ID) > 1
+)
+ORDER BY ID
+
+Neutered' 또는 'Spayed'라는 단어가 들어있습니다. 동물의 아이디와 이름, 중성화 여부를 아이디 순으로 조회하는 SQL문을 작성해주세요. 이때 중성화가 되어있다면 'O', 아니라면 'X'라고 표시해주세요.
+SELECT 
+    ANIMAL_ID, 
+    NAME,
+    CASE
+        WHEN SEX_UPON_INTAKE LIKE '%Neutered%' THEN 'O'
+        WHEN SEX_UPON_INTAKE LIKE '%Spayed%' THEN 'O'
+        ELSE 'X'
+    END as '중성화'
+FROM ANIMAL_INS 
+ORDER BY ANIMAL_ID
+
+동물 보호소에 들어온 동물 중, 이름이 없는 채로 들어온 동물의 ID를 조회하는 SQL 문을 작성해주세요. 단, ID는 오름차순 정렬되어야 합니다.
+SELECT ANIMAL_ID
+FROM ANIMAL_INS 
+WHERE NAME is NULL
+ORDER BY ANIMAL_ID ASC
+
+보호소에서는 몇 시에 입양이 가장 활발하게 일어나는지 알아보려 합니다. 09:00부터 19:59까지, 각 시간대별로 입양이 몇 건이나 발생했는지 조회하는 SQL문을 작성해주세요. 이때 결과는 시간대 순으로 정렬해야 합니다.
+SELECT HOUR(DATETIME) HOUR, COUNT(*) COUNT
+FROM ANIMAL_OUTS
+WHERE HOUR(DATETIME) >= 9 and HOUR(DATETIME) < 20
+GROUP BY HOUR
+ORDER BY HOUR
+
+FOOD_WAREHOUSE 테이블에서 경기도에 위치한 창고의 ID, 이름, 주소, 냉동시설 여부를 조회하는 SQL문을 작성해주세요. 이때 냉동시설 여부가 NULL인 경우, 'N'으로 출력시켜 주시고 결과는 창고 ID를 기준으로 오름차순 정렬해주세요.
+SELECT WAREHOUSE_ID,WAREHOUSE_NAME,ADDRESS, IFNULL(FREEZER_YN,"N") FREEZER_YN
+FROM FOOD_WAREHOUSE 
+WHERE ADDRESS LIKE '경기도%'
+ORDER BY WAREHOUSE_ID ASC
+
+PRODUCT 테이블에서 판매 중인 상품 중 가장 높은 판매가를 출력하는 SQL문을 작성해주세요. 이때 컬럼명은 MAX_PRICE로 지정해주세요.
+SELECT MAX(PRICE) MAX_PRICE
+FROM PRODUCT 
+
+FOOD_PRODUCT 테이블에서 가격이 제일 비싼 식품의 식품 ID, 식품 이름, 식품 코드, 식품분류, 식품 가격을 조회하는 SQL문을 작성해주세요.
+SELECT *
+FROM FOOD_PRODUCT
+ORDER BY PRICE DESC
+LIMIT 1
+
+USER_INFO 테이블에서 2021년에 가입한 회원 중 나이가 20세 이상 29세 이하인 회원이 몇 명인지 출력하는 SQL문을 작성해주세요.
+SELECT COUNT(*) USERS
+FROM USER_INFO 
+WHERE AGE BETWEEN 20 and 29 and YEAR(JOINED) = 2021
+
+DOCTOR 테이블에서 진료과가 흉부외과(CS)이거나 일반외과(GS)인 의사의 이름, 의사ID, 진료과, 고용일자를 조회하는 SQL문을 작성해주세요. 이때 결과는 고용일자를 기준으로 내림차순 정렬하고, 고용일자가 같다면 이름을 기준으로 오름차순 정렬해주세요.
+
+
+SELECT DR_NAME, DR_ID, MCDP_CD, DATE_FORMAT(HIRE_YMD , '%Y-%m-%d') HIRE_YMD
+FROM DOCTOR
+WHERE MCDP_CD in ('CS','GS')
+ORDER BY HIRE_YMD DESC, DR_NAME ASC

@@ -1,0 +1,4 @@
+평균
+insert O(1)
+Deletion O(1)
+Access O(1)
